@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<GridPane alignment="center" hgap="10" prefHeight="225.0" prefWidth="358.0" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+    <children>
+
+<VBox fx:id="vbox" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Button fx:id ="movieBtn" mnemonicParsing="false" prefHeight="50" prefWidth="176.0" styleClass="txt" text="Movie" />
+        <Button fx:id="proBtn"  mnemonicParsing="false" prefHeight="50" prefWidth="175.0" styleClass="txt" text="Professional" />
+    </children>
+</VBox>
+    </children>
+</GridPane>
