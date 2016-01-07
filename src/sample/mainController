@@ -1,0 +1,51 @@
+package sample;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+
+
+
+;
+/**
+ * Created by demo on 1/6/16.
+ */
+/*
+public class mainCont {
+
+
+    @FXML
+    Button btnLogin;
+
+    @FXML
+    HBox hbLogin;
+
+    @FXML
+
+    void initialize(){
+
+        btnLogin.setOnMouseClicked
+
+        @Override
+
+        public void handle
+
+        hbLogin.setVisible
+
+    }
+
+});
+
+        Platform.runLater
+
+@Override
+
+public void run() {
+
+        lblLogin.requestFocus();
+
+        }
+
+        });
+
+        } }
