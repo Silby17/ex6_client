@@ -48,6 +48,12 @@
     -fx-background-image: url("con.png");
 }
 
+.txt3{
+ -fx-font: 16px "Verdana";
+ -fx-font-weight:bold;
+ -fx-text-fill: #7B7B7B;
+
+}
 
 .txt{
         -fx-background-color:
