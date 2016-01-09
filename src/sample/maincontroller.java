@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +24,7 @@ import javafx.scene.Scene;
 
 public class maincontroller {
     @FXML
-    GridPane gridPane;
+    GridPane serverGrid;
     @FXML
     Label lblLogin;
     @FXML
@@ -40,6 +41,8 @@ public class maincontroller {
     Button allBtn;
     @FXML
     Button ipTextBox;
+    @FXML
+    VBox VbLogin;
 
 
     /***************************************************************************************************
@@ -51,24 +54,23 @@ public class maincontroller {
             Stage connectWindow = new Stage();
             connectWindow.setTitle("Connect to server");
             connectWindow.show();
+
+
 /*
             try {
-
-               // Parent root = FXMLLoader.load(getClass().getResource("setServer.fxml"));
-               // System.out.print("here3");
+                Parent root = FXMLLoader.load(getClass().getResource("sample/setServer.fxml"));
+                System.out.print("here3");
                 connectWindow.setTitle("Connect to server");
-                //System.out.print("here4");
+                System.out.print("here4");
                 Scene scene = new Scene(root,1000, 1000);
-                //scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
+                scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
                 connectWindow.setScene(scene);
                 connectWindow.show();
             } catch(Exception e){
-
+                System.out.print("here5");
             }
 
 */
-
-
 
         }
     }
