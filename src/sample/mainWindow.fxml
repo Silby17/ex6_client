@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 <?import javafx.collections.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
@@ -30,11 +32,7 @@
       <HBox fx:id="hbLogin" alignment="TOP_LEFT" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1000.0" spacing="30.0" styleClass="hbLogin" GridPane.columnIndex="2" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 
          <children>
-
-            <Label fx:id="lblLogin" styleClass="txt3" text="Welcome" />
-            <Button fx:id="logoBtn" layoutX="50" layoutY="50" mnemonicParsing="false" prefHeight="69.0"
-
-                    prefWidth="130.0" style="-fx-graphic: url('http://photos.gograph.com/thumbs/CSP/CSP389/k3897443.jpg')" />
+            <Button fx:id="logoBtn" layoutX="50" layoutY="50" mnemonicParsing="false" prefHeight="69.0" prefWidth="130.0" style="-fx-graphic: url('http://photos.gograph.com/thumbs/CSP/CSP389/k3897443.jpg')" />
             <ChoiceBox fx:id="choiceBox">
                <items>
                   <FXCollections fx:factory="observableArrayList">
@@ -44,13 +42,19 @@
                   </FXCollections>
                </items>
             </ChoiceBox>
-            <Button fx:id="searchBtn" layoutX="50" layoutY="50" mnemonicParsing="false" prefHeight="69.0"
-
-                    prefWidth="130.0"
-                    style="-fx-graphic: url('http://findicons.com/files/icons/1742/ecqlipse_2/128/search.png')" />
-         <Button fx:id="deletBtn" mnemonicParsing="false" styleClass="txt" text="Delete" />
-         <Button fx:id="addBtn" alignment="TOP_RIGHT" mnemonicParsing="false" styleClass="txt" text="Add" />
-            <Button fx:id="allBtn" mnemonicParsing="false" styleClass="txt" text="All" />
+            <Button fx:id="searchBtn" layoutX="50" layoutY="50" mnemonicParsing="false" prefHeight="69.0" prefWidth="130.0" style="-fx-graphic: url('http://findicons.com/files/icons/1742/ecqlipse_2/128/search.png')" />
+         <Button fx:id="deletBtn" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" styleClass="txt" text="Delete">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin></Button>
+         <Button fx:id="addBtn" alignment="TOP_LEFT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" styleClass="txt" text="Add">
+               <HBox.margin>
+                  <Insets left="100.0" />
+               </HBox.margin></Button>
+            <Button fx:id="allBtn" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" styleClass="txt" text="All">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin></Button>
    
       </children>
       </HBox>
