@@ -21,25 +21,23 @@
 
     <children>
         <HBox fx:id="hbMain" prefHeight="1000.0" prefWidth="1000.0"
-              spacing="10.0">
+              spacing="10.0" alignment="TOP_CENTER">
             <children>
 
                 <Button fx:id="btnConn" layoutX="50" layoutY="50"
-                        mnemonicParsing="false" prefHeight="69.0"
-                        prefWidth="130.0"
+                        mnemonicParsing="false"
                         styleClass="btnWithImage"/>
-
-                <ChoiceBox fx:id="cbOptions" prefWidth="150.0"/>
+                <TextField fx:id="tfInput" prefWidth="100" />
+                <ChoiceBox fx:id="cbOptions" prefWidth="100.0"/>
 
                 <Button
                         fx:id="btnSearch" layoutX="50" layoutY="50"
-                        mnemonicParsing="false" prefHeight="69.0"
-                        prefWidth="130.0"
+                        mnemonicParsing="false"
                         styleClass="btnSearch"/>
 
-                <Button mnemonicParsing="false" text="Add"/>
-                <Button mnemonicParsing="false" text="Delete"/>
-                <Button mnemonicParsing="false" text="All"/>
+                <Button mnemonicParsing="false" styleClass="btnAdd"/>
+                <Button mnemonicParsing="false" styleClass="btnMinus"/>
+                <Button mnemonicParsing="false" styleClass="btnAll"/>
             </children>
         </HBox>
     </children>

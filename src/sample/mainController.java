@@ -4,70 +4,58 @@
  * File: maincontrooler.java	        *
  ****************************************/
 package sample;
+
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
+import java.io.IOException;
 
-public class maincontroller {
+
+public class mainController {
     @FXML
-    GridPane serverGrid;
+    HBox hbMain;
     @FXML
-    Label lblLogin;
+    ChoiceBox cbOptions;
     @FXML
-    Button logoBtn;
+    Button btnConn;
     @FXML
-    HBox hbLogin;
-    @FXML
-    TextField search;
-    @FXML
-    Button deletBtn;
-    @FXML
-    Button addBtn;
-    @FXML
-    Button allBtn;
+    Button btnSearch;
+
     @FXML
     Button ipTextBox;
     @FXML
     VBox VbLogin;
 
 
-    /***************************************************************************************************
-     * This is an inner class which is incharge of setting a new window to connect to server        	*
-     ***************************************************************************************************/
-    class SetServer implements EventHandler<MouseEvent>{
-
+    /****************************************************************
+     * This is an inner class which is in charge of creating a new  *
+     * server Config window                                         *
+     ***************************************************************/
+    class SetServer implements EventHandler<MouseEvent> {
         public void handle(MouseEvent event) {
-            Stage connectWindow = new Stage();
-            connectWindow.setTitle("Connect to server");
-            connectWindow.show();
-
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("sample/setServer.fxml"));
-                System.out.print("here3");
-                connectWindow.setTitle("Connect to server");
-                System.out.print("here4");
-                Scene scene = new Scene(root,1000, 1000);
-                scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
-                connectWindow.setScene(scene);
-                connectWindow.show();
-            } catch(Exception e){
-                System.out.print("here5");
+                FXMLLoader fxmlloader = new FXMLLoader(
+                        getClass().getResource("setServer.fxml"));
+                Parent root1 = fxmlloader.load();
+                Stage stage = new Stage();
+                stage.setTitle("Server Settings");
+                stage.setScene(new Scene(root1));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+
             }
         }
+
     }
     /*
 
@@ -119,45 +107,29 @@ public void show(){
                           conMenu.show(allBtn, t.getScreenX(), t.getSceneY());
                       }
                   }
-
     }
     */
-    /************************************************************************************************************
-     * This is an inner class which is incharge of setting a new window according to the search              	*
-     ************************************************************************************************************/
-    /*
-    class  ShowSearchResults implements EventHandler<MouseEvent>{
 
-        @Override
-        public void handle(MouseEvent event) {
-            hbLogin.setVisible(false);
-
-        }
-    }
-    */
-//Like constructor
+    /****************************************************************
+     * This is an inner class which is in charge of setting a new   *
+     * window according to the search              	                *
+     * /
+     **************************************************************/
     @FXML
-    void initialize(){
-
-        logoBtn.setOnMouseClicked(new EventHandler<MouseEvent>() {
-        @Override
-        public void handle(MouseEvent event){
-            logoBtn.setOnMouseClicked(new SetServer());
-        //    addBtn.setOnMouseClicked(new Operation());
-         //   deletBtn.setOnMouseClicked(new Operation());
-          //  allBtn.setOnMouseClicked(new Operation());
-            //change it
-           // search.setOnMouseClicked(new ShowSearchResults());
-
-    }
-
-});
-
-        Platform.runLater(new Runnable(){
-        @Override
-        public void run() {
-            logoBtn.requestFocus();
-        }
+    void initialize() {
+        btnConn.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                btnConn.setOnMouseClicked(new SetServer());
+            }
         });
 
-        } }
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                //btnConn.requestFocus();
+            }
+        });
+
+    }
+}

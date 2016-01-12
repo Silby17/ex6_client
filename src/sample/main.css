@@ -1,9 +1,7 @@
 
 
 .hbLogin{
- -fx-background-image: url("images.png");
-  -fx-background-repeat: stretch;
- -fx-background-size: 1000 1000;
+ -fx-background-image: url("Image-Cinema.png");
   -fx-background-position: top left;
 
 
@@ -11,7 +9,7 @@
 
 .logo{
 
-    -fx-background-image: url("index.png");
+    -fx-background-image: url("Image-CC.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position:left;
 
@@ -44,8 +42,27 @@
 
 }
 
-.btn {
-    -fx-background-image: url("con.png");
+.btnAdd{
+    -fx-graphic: url("Icon-plus.jpg");
+}
+
+.btnMinus{
+    -fx-graphic: url("Icon-minus.png");
+}
+
+.btnAll{
+    -fx-graphic: url("Icon-all.jpg");
+}
+
+.btnWithImage{
+    -fx-graphic: url("Icon-Settings2.png");
+}
+.btnSearch{
+    -fx-graphic: url("Icon-s.png");
+}
+
+.btnConfig {
+    -fx-background-image: url("Icon_conn.png");
 }
 
 .txt3{

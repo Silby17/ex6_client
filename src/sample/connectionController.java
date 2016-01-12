@@ -1,8 +1,8 @@
 package sample;
 
+import javafx.fxml.FXML;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 
 
 public class connectionController {
-
     @FXML
     Button btnConnect;
     @FXML
@@ -29,7 +28,6 @@ public class connectionController {
         Stage stage = (Stage) btnConnect.getScene().getWindow();
         System.out.println(tfIP.getText());
         System.out.println(tfSocket.getText());
-        tfIP.setText(tfIP.getText());
         stage.close();
     }
 
