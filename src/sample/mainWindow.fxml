@@ -44,7 +44,7 @@
                <HBox.margin>
                   <Insets left="100.0" />
                </HBox.margin></Button>
-            <Button fx:id="allBtn" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" styleClass="txt" text="All">
+            <Button fx:id="allBtn" maxHeight="-Infinity"  minHeight="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" styleClass="txt" text="All">
                <HBox.margin>
                   <Insets />
                </HBox.margin></Button>

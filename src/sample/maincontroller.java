@@ -5,16 +5,16 @@
  ****************************************/
 package sample;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -55,8 +55,6 @@ public class maincontroller {
             connectWindow.setTitle("Connect to server");
             connectWindow.show();
 
-
-/*
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("sample/setServer.fxml"));
                 System.out.print("here3");
@@ -69,27 +67,65 @@ public class maincontroller {
             } catch(Exception e){
                 System.out.print("here5");
             }
-
-*/
-
         }
     }
+    /*
 
-    /************************************************************************************************************
-     * This is an inner class which is incharge of setting a new window according to button which was pressed	*
-     ************************************************************************************************************/
-    class Operation implements EventHandler<MouseEvent>{
-
+public void show(){
+    TextField textField = new TextField("Type Something"); // we will add a popup menu to this text field
+    final ContextMenu contextMenu = new ContextMenu();
+    MenuItem cut = new MenuItem("Cut");
+    MenuItem copy = new MenuItem("Copy");
+    MenuItem paste = new MenuItem("Paste");
+    contextMenu.getItems().addAll(cut, copy, paste);
+    cut.setOnAction(new EventHandler<ActionEvent>() {
         @Override
-        public void handle(MouseEvent event) {
-            hbLogin.setVisible(false);
-
+        public void handle(ActionEvent event) {
+            System.out.println("Cut...");
         }
-    }
+    });
+// ...
+    textField.setContextMenu(contextMenu);
+}
 
+
+    public void initialize2() {
+          final ContextMenu contextMenu = new ContextMenu(new VBox(new Button("Movie"),new Button("Professional")));
+          serverGrid.setOnMouseClicked(new EventHandler<MouseEvent>() {
+              @Override
+              public void handle(MouseEvent mouseEvent) {
+                  contextMenu.show(
+                          serverGrid,
+                          mouseEvent.getScreenX(),
+                          mouseEvent.getScreenY()
+                  );
+              }
+          });
+      }
+
+
+      /************************************************************************************************************
+       * This is an inner class which is incharge of setting a new window according to button which was pressed	*
+       ************************************************************************************************************/
+    /*
+    class Operation implements EventHandler<MouseEvent>{
+                  @Override
+                  public void handle(MouseEvent t) {
+                      ContextMenu conMenu  =new ContextMenu();
+                      MenuItem movieOption = new MenuItem("Movie");
+                      MenuItem professionalOption = new MenuItem("Professional");
+                      conMenu.getItems().addAll(movieOption,professionalOption);
+                      if(t.getButton().toString().equals("SECONDARY")) {
+                          conMenu.show(allBtn, t.getScreenX(), t.getSceneY());
+                      }
+                  }
+
+    }
+    */
     /************************************************************************************************************
      * This is an inner class which is incharge of setting a new window according to the search              	*
      ************************************************************************************************************/
+    /*
     class  ShowSearchResults implements EventHandler<MouseEvent>{
 
         @Override
@@ -98,7 +134,7 @@ public class maincontroller {
 
         }
     }
-
+    */
 //Like constructor
     @FXML
     void initialize(){
@@ -107,27 +143,21 @@ public class maincontroller {
         @Override
         public void handle(MouseEvent event){
             logoBtn.setOnMouseClicked(new SetServer());
-            addBtn.setOnMouseClicked(new Operation());
-            deletBtn.setOnMouseClicked(new Operation());
-            allBtn.setOnMouseClicked(new Operation());
+        //    addBtn.setOnMouseClicked(new Operation());
+         //   deletBtn.setOnMouseClicked(new Operation());
+          //  allBtn.setOnMouseClicked(new Operation());
             //change it
-            search.setOnMouseClicked(new ShowSearchResults());
+           // search.setOnMouseClicked(new ShowSearchResults());
 
     }
 
 });
 
-
-
-
-
         Platform.runLater(new Runnable(){
         @Override
         public void run() {
-            lblLogin.requestFocus();
-
+            logoBtn.requestFocus();
         }
-
         });
 
         } }
