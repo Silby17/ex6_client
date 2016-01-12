@@ -1,55 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.geometry.*?>
-<?import javafx.collections.*?>
+
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
+<GridPane fx:id="gpMain" maxHeight="-Infinity" maxWidth="-Infinity"
+          minHeight="-Infinity" minWidth="-Infinity"
+          prefHeight="620.0" prefWidth="414.0"
+          xmlns:fx="http://javafx.com/fxml/1"
+          xmlns="http://javafx.com/javafx/8"
+          fx:controller="sample.mainController"
+          styleClass="hbLogin">
 
-<GridPane alignment="center" hgap="10" prefHeight="225.0" prefWidth="358.0" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.maincontroller">
+    <columnConstraints>
+        <ColumnConstraints/>
 
-   <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
-   <children>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+    </rowConstraints>
 
-      <HBox fx:id="hbLogin" alignment="TOP_LEFT" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1000.0" spacing="30.0" styleClass="hbLogin" GridPane.columnIndex="2" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <HBox fx:id="hbMain" prefHeight="1000.0" prefWidth="1000.0"
+              spacing="10.0">
+            <children>
 
-         <children>
-            <Button fx:id="logoBtn" layoutX="50" layoutY="50" mnemonicParsing="false" prefHeight="69.0" prefWidth="130.0" style="-fx-graphic: url('http://photos.gograph.com/thumbs/CSP/CSP389/k3897443.jpg')" />
-            <ChoiceBox fx:id="choiceBox">
-               <items>
-                  <FXCollections fx:factory="observableArrayList">
-                     <String fx:value="Movie by id/&gt;" />
-                     <String fx:value="Movie by professional id" />
-                     <String fx:value="Professionals by movie" />
-                  </FXCollections>
-               </items>
-            </ChoiceBox>
-            <Button fx:id="searchBtn" layoutX="50" layoutY="50" mnemonicParsing="false" prefHeight="69.0" prefWidth="130.0" style="-fx-graphic: url('http://findicons.com/files/icons/1742/ecqlipse_2/128/search.png')" />
-         <Button fx:id="deletBtn" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" styleClass="txt" text="Delete">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin></Button>
-         <Button fx:id="addBtn" alignment="TOP_LEFT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" styleClass="txt" text="Add">
-               <HBox.margin>
-                  <Insets left="100.0" />
-               </HBox.margin></Button>
-            <Button fx:id="allBtn" maxHeight="-Infinity"  minHeight="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" styleClass="txt" text="All">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin></Button>
-   
-      </children>
-      </HBox>
-   </children>
+                <Button fx:id="btnConn" layoutX="50" layoutY="50"
+                        mnemonicParsing="false" prefHeight="69.0"
+                        prefWidth="130.0"
+                        styleClass="btnWithImage"/>
+
+                <ChoiceBox fx:id="cbOptions" prefWidth="150.0"/>
+
+                <Button
+                        fx:id="btnSearch" layoutX="50" layoutY="50"
+                        mnemonicParsing="false" prefHeight="69.0"
+                        prefWidth="130.0"
+                        styleClass="btnSearch"/>
+
+                <Button mnemonicParsing="false" text="Add"/>
+                <Button mnemonicParsing="false" text="Delete"/>
+                <Button mnemonicParsing="false" text="All"/>
+            </children>
+        </HBox>
+    </children>
 </GridPane>
