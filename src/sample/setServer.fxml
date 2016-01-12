@@ -22,8 +22,9 @@
     </rowConstraints>
     <children>
 
-    <VBox fx:id="VbLogin" alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="10.0"
-          styleClass="VbLogin" GridPane.columnIndex="2" xmlns="http://javafx.com/javafx/8"
+    <VBox fx:id="VbLogin" alignment="CENTER" prefHeight="400.0"
+          prefWidth="600.0" spacing="10.0" styleClass="VbLogin"
+          GridPane.columnIndex="2" xmlns="http://javafx.com/javafx/8"
           xmlns:fx="http://javafx.com/fxml/1">
 
         <children>
