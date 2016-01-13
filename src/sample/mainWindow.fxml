@@ -3,6 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.geometry.Insets?>
 <GridPane fx:id="gpMain" maxHeight="-Infinity" maxWidth="-Infinity"
           minHeight="-Infinity" minWidth="-Infinity"
           prefHeight="620.0" prefWidth="414.0"
@@ -34,10 +35,20 @@
                         fx:id="btnSearch" layoutX="50" layoutY="50"
                         mnemonicParsing="false"
                         styleClass="btnSearch"/>
+                <Button fx:id="deletBtn" alignment="TOP_LEFT" mnemonicParsing="false" styleClass="btnAdd">
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin></Button>
+                <Button fx:id="addBtn" alignment="TOP_LEFT" contentDisplay="CENTER" mnemonicParsing="false"
+                        styleClass="btnMinus" >
+                    <HBox.margin>
+                        <Insets left="100.0" />
+                    </HBox.margin></Button>
+                <Button fx:id="allBtn" mnemonicParsing="false" styleClass="btnAll" >
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin></Button>
 
-                <Button mnemonicParsing="false" styleClass="btnAdd"/>
-                <Button mnemonicParsing="false" styleClass="btnMinus"/>
-                <Button mnemonicParsing="false" styleClass="btnAll"/>
             </children>
         </HBox>
     </children>
