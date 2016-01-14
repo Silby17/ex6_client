@@ -25,8 +25,8 @@
     <children>
         <TextField fx:id="code" promptText="Code " />
         <TextField  fx:id="name" promptText="Name" />
-        <CheckBox fx:id="female" mnemonicParsing="false" text="female" />
-        <CheckBox fx:id="male" mnemonicParsing="false" text="male" />
+        <CheckBox fx:id="female" mnemonicParsing="false" text="Female" />
+        <CheckBox fx:id="male" mnemonicParsing="false" text="Male" />
         <TextField fx:id="length" promptText="Length" />
         <TextField fx:id="year" promptText="Year" />
         <Label fx:id="ratelab" styleClass="rateLable" text="Rate the movie 0-10" />
