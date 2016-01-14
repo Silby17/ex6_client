@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Slider?>
 
 
+<?import javafx.geometry.Insets?>
 <VBox fx:id="vbConnect" alignment="CENTER" spacing="10.0" styleClass="vbLogin"
       xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="sample.loginController" prefWidth="400"
@@ -20,12 +21,13 @@
         <TextField fx:id="tflength" promptText="Length" />
         <TextField fx:id="tfyear" promptText="Year" />
 
-        <Label fx:id="ratelab" styleClass="rateLable" text="Rate the movie 0-10" />
+        <Label fx:id="ratelab" styleClass="lblRate" text="Rate the movie 0-10"/>
         <Slider fx:id="sldrRating" max="10.0" min="0" majorTickUnit="5"
                 showTickLabels="true" showTickMarks="true"/>
         <TextField fx:id="tfDescr" promptText="Description"/>
-        <Button fx:id="btnDone" text="Save" styleClass="button">
-        </Button>
-
+        <Button fx:id="btnDone" styleClass="button" text="Add">
+            <VBox.margin>
+                <Insets bottom="20.0" />
+            </VBox.margin></Button>
     </children>
 </VBox>
