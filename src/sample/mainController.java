@@ -1,7 +1,7 @@
 /****************************************
  * Yossi Silberhaft & Nava Shemoul		*
  * Exercise 6							*
- * File: maincontrooler.java	        *
+ * File: mainController.java	        *
  ****************************************/
 package sample;
 
@@ -64,7 +64,6 @@ public class mainController {
 
     class Movie implements EventHandler<ActionEvent>{
         public void handle(ActionEvent event){
-            System.out.println("inside movie");
             try {
                 FXMLLoader fxmlloader = new FXMLLoader(
                         getClass().getResource("addMovie.fxml"));
@@ -83,7 +82,6 @@ public class mainController {
 
     class AddPro implements EventHandler<ActionEvent>{
         public void handle(ActionEvent event){
-            System.out.println("inside pro");
             try {
                 FXMLLoader fxmlloader = new FXMLLoader(
                         getClass().getResource("addPro.fxml"));
