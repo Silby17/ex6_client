@@ -15,8 +15,8 @@
         <Label fx:id="lblLogin" styleClass="mainTitle"
                text="Please enter server details" />
 
-        <TextField fx:id= "tfIP" promptText="IP Address" styleClass="txt" />
-        <TextField fx:id="tfSocket" promptText="Socket" styleClass="txt" />
+        <TextField fx:id= "tfIP" text="127.0.0.1" styleClass="txt" />
+        <TextField fx:id="tfSocket" text="5678" styleClass="txt" />
         <Button fx:id="btnConnect" text="Save" styleClass="button" />
     </children>
 </VBox>
