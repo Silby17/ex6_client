@@ -1,53 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.geometry.Insets?>
 <GridPane fx:id="gpMain" maxHeight="-Infinity" maxWidth="-Infinity"
-          minHeight="-Infinity" minWidth="-Infinity"
-          prefHeight="620.0" prefWidth="414.0"
-          xmlns:fx="http://javafx.com/fxml/1"
+          minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0"
+          prefWidth="414.0" styleClass="hbLogin"
           xmlns="http://javafx.com/javafx/8"
-          fx:controller="sample.mainController"
-          styleClass="hbLogin">
+          xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="sample.mainController">
 
     <columnConstraints>
-        <ColumnConstraints/>
+        <ColumnConstraints />
 
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
 
     <children>
-        <HBox fx:id="hbMain" prefHeight="1000.0" prefWidth="1000.0"
-              spacing="10.0" alignment="TOP_CENTER">
+        <HBox fx:id="hbMain" alignment="TOP_CENTER" prefHeight="1000.0"
+              prefWidth="1000.0" spacing="10.0">
             <children>
 
                 <Button fx:id="btnConn" layoutX="50" layoutY="50"
-                        mnemonicParsing="false"
-                        styleClass="btnWithImage"/>
-                <TextField fx:id="tfInput" prefWidth="100" />
-                <ChoiceBox fx:id="cbOptions" prefWidth="100.0"/>
+                        mnemonicParsing="false" styleClass="btnWithImage" />
+                <TextField fx:id="tfOptions" prefWidth="150" />
+                <ChoiceBox fx:id="cbOptions" prefWidth="100" />
 
-                <Button
-                        fx:id="btnSearch" layoutX="50" layoutY="50"
-                        mnemonicParsing="false"
-                        styleClass="btnSearch"/>
-                <Button fx:id="deletBtn" alignment="TOP_LEFT" mnemonicParsing="false" styleClass="btnAdd">
+                <Button fx:id="btnSearch" layoutX="50" layoutY="50"
+                        mnemonicParsing="false" styleClass="btnSearch" />
+                <Button fx:id="btnDelete" alignment="TOP_LEFT"
+                        mnemonicParsing="false" styleClass="btnAdd">
                     <HBox.margin>
                         <Insets />
                     </HBox.margin></Button>
-                <Button fx:id="addBtn" alignment="TOP_LEFT" contentDisplay="CENTER" mnemonicParsing="false"
-                        styleClass="btnMinus" >
+                <Button fx:id="btnAdd" alignment="TOP_LEFT"
+                        contentDisplay="CENTER" mnemonicParsing="false"
+                        styleClass="btnMinus">
                     <HBox.margin>
                         <Insets left="100.0" />
                     </HBox.margin></Button>
-                <Button fx:id="allBtn" mnemonicParsing="false" styleClass="btnAll" >
+                <Button fx:id="btnAll" mnemonicParsing="false"
+                        styleClass="btnAll">
                     <HBox.margin>
                         <Insets />
-                    </HBox.margin></Button>
+                    </HBox.margin>
+               </Button>
+
 
             </children>
         </HBox>
