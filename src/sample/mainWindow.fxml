@@ -2,6 +2,8 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 
 <GridPane fx:id="gpMain" maxHeight="-Infinity" maxWidth="-Infinity"
           minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0"
@@ -26,7 +28,18 @@
                 <Button fx:id="btnConn" layoutX="50" layoutY="50"
                         mnemonicParsing="false" styleClass="btnWithImage" />
                 <TextField fx:id="tfOptions" prefWidth="150" />
-                <ChoiceBox fx:id="cbOptions" prefWidth="100" />
+                <ChoiceBox fx:id="cbOptions" prefWidth="100">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Movies by professional ID"
+                                    fx:id="movieByProID"/>
+                            <String fx:value="Professionals by Movie"
+                                    fx:id="proByMovie"/>
+                            <String fx:value="Movie by ID"
+                                    fx:id="movieByID"/>
+                        </FXCollections>
+                    </items>
+                </ChoiceBox>
 
                 <Button fx:id="btnSearch" layoutX="50" layoutY="50"
                         mnemonicParsing="false" styleClass="btnSearch" />
