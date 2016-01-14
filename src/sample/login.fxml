@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.collections.FXCollections?>
-<GridPane alignment="center" hgap="10" prefHeight="225.0" prefWidth="358.0" vgap="10"
-          xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.mainController">
+
+
+<GridPane alignment="center" hgap="10" prefHeight="225.0" prefWidth="358.0"
+          vgap="10" xmlns="http://javafx.com/javafx/8"
+          xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="sample.loginController">
     <columnConstraints>
+        <ColumnConstraints />
         <ColumnConstraints />
         <ColumnConstraints />
         <ColumnConstraints />
@@ -17,42 +23,49 @@
         <RowConstraints />
         <RowConstraints />
         <RowConstraints />
+        <RowConstraints />
     </rowConstraints>
     <children>
 
-<VBox fx:id="vbox" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
-      xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <TextField fx:id="code" promptText="Code " />
-        <TextField  fx:id="name" promptText="Name" />
-        <CheckBox fx:id="female" mnemonicParsing="false" text="Female" />
-        <CheckBox fx:id="male" mnemonicParsing="false" text="Male" />
-        <TextField fx:id="length" promptText="Length" />
-        <TextField fx:id="year" promptText="Year" />
-        <Label fx:id="ratelab" styleClass="rateLable" text="Rate the movie 0-10" />
-        <Slider fx:id="slider" max="10.0" />
-        <ChoiceBox fx:id="ganre">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="male" />
-                    <String fx:value="female" />
-                </FXCollections>
-            </items>
-        </ChoiceBox>
-        <ChoiceBox fx:id="proffesionals">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Actor" />
-                    <String fx:value="Director" />
-                    <String fx:value="Screenwriter" />
-                    <String fx:value="Producer" />
-                </FXCollections>
-            </items>
-        </ChoiceBox>
+        <VBox fx:id="vbox" prefHeight="283.0" prefWidth="399.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+            <children>
+                <TextField fx:id="code" promptText="Code " />
+                <TextField fx:id="name" promptText="Name" />
+                <CheckBox fx:id="female" mnemonicParsing="false" text="Female" />
+                <CheckBox fx:id="male" mnemonicParsing="false" text="Male" />
+                <TextField fx:id="length" promptText="Length" />
+                <TextField fx:id="year" promptText="Year" />
+                <Label fx:id="ratelab" styleClass="rateLable" text="Rate the movie 0-10" />
+                <Slider fx:id="slider" max="10.0" />
+                <ChoiceBox fx:id="ganre" prefHeight="25.0" prefWidth="117.0">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="male" />
+                            <String fx:value="female" />
+                        </FXCollections>
+                    </items>
+                </ChoiceBox>
+                <ChoiceBox fx:id="proffesionals" prefHeight="25.0" prefWidth="116.0">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Actor" />
+                            <String fx:value="Director" />
+                            <String fx:value="Screenwriter" />
+                            <String fx:value="Producer" />
+                        </FXCollections>
+                    </items>
+                </ChoiceBox>
+                <Button id="btnDone" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Done">
+                    <VBox.margin>
+                        <Insets left="300.0" />
+                    </VBox.margin>
+                    <padding>
+                        <Insets left="100.0" top="20.0" />
+                    </padding></Button>
 
+
+            </children>
+        </VBox>
 
     </children>
-</VBox>
-
-        </children>
-        </GridPane>
+</GridPane>
