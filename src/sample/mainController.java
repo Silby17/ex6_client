@@ -60,15 +60,17 @@ public class mainController {
 
     }
 
-    class Login implements EventHandler<ActionEvent>{
+
+
+    class Movie implements EventHandler<ActionEvent>{
         public void handle(ActionEvent event){
-            System.out.println("inside handler of login");
+            System.out.println("inside movie");
             try {
                 FXMLLoader fxmlloader = new FXMLLoader(
-                        getClass().getResource("SYUMsetServer.fxml"));
+                        getClass().getResource("addMovie.fxml"));
                 Parent root1 = fxmlloader.load();
                 Stage stage = new Stage();
-                stage.setTitle("Login");
+                stage.setTitle("Add Movie");
                 stage.setScene(new Scene(root1));
                 stage.show();
             } catch (IOException e) {
@@ -76,15 +78,31 @@ public class mainController {
 
             }
         }
-
     }
 
 
+    class AddPro implements EventHandler<ActionEvent>{
+        public void handle(ActionEvent event){
+            System.out.println("inside pro");
+            try {
+                FXMLLoader fxmlloader = new FXMLLoader(
+                        getClass().getResource("addPro.fxml"));
+                Parent root1 = fxmlloader.load();
+                Stage stage = new Stage();
+                stage.setTitle("Add Professional");
+                stage.setScene(new Scene(root1));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+
+            }
+        }
+    }
+
     /****************************************************************
-     * This is an inner class which is in charge of setting a new   *
-     * window according to the search              	                *
-     * /
-     **************************************************************/
+     * This is an inner class which is in charge of setting a new
+     * window according to the search
+     ****************************************************************/
     @FXML
     void initialize() {
         ContextMenu cmAll = new ContextMenu();
@@ -92,11 +110,14 @@ public class mainController {
         MenuItem miPro = new MenuItem("Professional");
         cmAll.getItems().addAll(miMovie, miPro);
 
+
+
         btnConn.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 System.out.println("Opening set Server");
                 btnConn.setOnMouseClicked(new SetServer());
+                System.out.println(cbOptions.getItems());
 
 
             }
@@ -112,12 +133,16 @@ public class mainController {
 
 
 
-
+        /****************************************************************
+         * This will deal with the clicking of the Movie menu-item
+         ****************************************************************/
         btnAll.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 cmAll.show(btnAll, event.getScreenX(), event.getScreenY());
-                miMovie.setOnAction(new Login());
+                miPro.setOnAction(new AddPro());
+                miMovie.setOnAction(new Movie());
+
             }
         });
 
@@ -127,6 +152,8 @@ public class mainController {
             @Override
             public void handle(MouseEvent event) {
                 cmAll.show(btnAll, event.getScreenX(), event.getScreenY());
+                miMovie.setOnAction(new Movie());
+                miPro.setOnAction(new AddPro());
             }
         });
 
@@ -136,6 +163,7 @@ public class mainController {
             @Override
             public void handle(MouseEvent event) {
                 cmAll.show(btnAll, event.getScreenX(), event.getScreenY());
+
             }
         });
 
@@ -143,6 +171,7 @@ public class mainController {
             @Override
             public void handle(MouseEvent event) {
                 cmAll.show(btnAll, event.getScreenX(), event.getScreenY());
+
             }
         });
     }
