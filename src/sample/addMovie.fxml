@@ -8,6 +8,7 @@
 
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
 <VBox fx:id="vbConnect" alignment="CENTER" spacing="10.0" styleClass="vbLogin"
       xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="sample.loginController" prefWidth="400"
@@ -15,7 +16,11 @@
 
     <children>
         <Label fx:id="lblLogin" styleClass="mainTitle"
-               text="Add a new Movie" />
+               text="Add a new Movie">
+            <font>
+                <Font size="17"/>
+            </font>
+        </Label>
         <TextField fx:id="tfCode" promptText="Code " />
         <TextField fx:id="tfName" promptText="Name" />
         <TextField fx:id="tflength" promptText="Length" />
