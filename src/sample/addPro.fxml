@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<?import javafx.scene.text.Font?>
+<VBox fx:id="vbConnect" alignment="CENTER" prefHeight="250" prefWidth="400"
+      spacing="10.0" styleClass="vbLogin" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="sample.loginController">
+
+    <children>
+        <Label fx:id="lblLogin" styleClass="mainTitle"
+               text="Add a new Professional">
+            <font>
+                <Font size="17" />
+            </font>
+        </Label>
+        <ChoiceBox fx:id="idPros" nodeOrientation="LEFT_TO_RIGHT"
+                   prefHeight="25.0" prefWidth="116.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Actor" />
+                    <String fx:value="Director" />
+                    <String fx:value="Screenwriter" />
+                    <String fx:value="Producer" />
+                </FXCollections>
+            </items>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+        </ChoiceBox>
+
+        <TextField fx:id="tfID" promptText="ID number" />
+        <TextField fx:id="tfName" promptText="Name" />
+        <TextField fx:id="tflength" promptText="Length" />
+        <TextField fx:id="tfyear" promptText="Year" />
+
+        <TextField fx:id="tfDescr" promptText="Description" />
+        <ChoiceBox fx:id="cbGenre" prefHeight="25.0" prefWidth="117.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:id="sMale" fx:value="Male" />
+                    <String fx:id="sFemale" fx:value="Female" />
+
+                </FXCollections>
+            </items>
+         <VBox.margin>
+            <Insets right="280.0" />
+         </VBox.margin>
+        </ChoiceBox>
+        <Button fx:id="btnDone" styleClass="button" text="Add">
+         <VBox.margin>
+            <Insets bottom="20.0" />
+         </VBox.margin></Button>
+
+    </children>
+</VBox>
