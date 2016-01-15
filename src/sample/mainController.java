@@ -5,11 +5,14 @@
  ****************************************/
 package sample;
 
+import javafx.fxml.FXML;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -17,7 +20,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import java.io.IOException;
-
 
 public class mainController {
     @FXML
@@ -34,9 +36,8 @@ public class mainController {
     Button btnDelete;
     @FXML
     Button btnAdd;
-
-
-
+    @FXML
+    TextField tfOptions;
 
     /****************************************************************
      * This is an inner class which is in charge of creating a new  *
@@ -57,19 +58,21 @@ public class mainController {
 
             }
         }
-
     }
 
 
-
-    class Movie implements EventHandler<ActionEvent>{
+    /****************************************************************
+     * This is an inner class which is in charge of creating a new  *
+     * window for adding a movie                                    *
+     ***************************************************************/
+    class addMovie implements EventHandler<ActionEvent>{
         public void handle(ActionEvent event){
             try {
                 FXMLLoader fxmlloader = new FXMLLoader(
                         getClass().getResource("addMovie.fxml"));
                 Parent root1 = fxmlloader.load();
                 Stage stage = new Stage();
-                stage.setTitle("Add Movie");
+                stage.setTitle("Add addMovie");
                 stage.setScene(new Scene(root1));
                 stage.show();
             } catch (IOException e) {
@@ -80,6 +83,10 @@ public class mainController {
     }
 
 
+    /****************************************************************
+     * This is an inner class which is in charge of creating a new  *
+     * window for adding a new Professional                         *
+     ***************************************************************/
     class AddPro implements EventHandler<ActionEvent>{
         public void handle(ActionEvent event){
             try {
@@ -97,6 +104,7 @@ public class mainController {
         }
     }
 
+
     /****************************************************************
      * This is an inner class which is in charge of setting a new
      * window according to the search
@@ -109,11 +117,9 @@ public class mainController {
         cmAll.getItems().addAll(miMovie, miPro);
 
 
-
         btnConn.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                System.out.println("Opening set Server");
                 btnConn.setOnMouseClicked(new SetServer());
                 System.out.println(cbOptions.getItems());
 
@@ -128,18 +134,27 @@ public class mainController {
             }
         });
 
-
-
-
-        /****************************************************************
-         * This will deal with the clicking of the Movie menu-item
-         ****************************************************************/
-        btnAll.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        btnSearch.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                cmAll.show(btnAll, event.getScreenX(), event.getScreenY());
-                miPro.setOnAction(new AddPro());
-                miMovie.setOnAction(new Movie());
+                cmAll.show(btnSearch, event.getScreenX(), event.getScreenY());
+
+            }
+        });
+
+
+        btnDelete.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                cmAll.show(btnDelete, event.getScreenX(), event.getScreenY());
+
+                try{
+                    int ID = Integer.parseInt(tfOptions.getText());
+                    tfOptions.setStyle("-fx-background-color: white");
+
+                }catch (NumberFormatException e){
+                    tfOptions.setStyle("-fx-background-color: red");
+                }
 
             }
         });
@@ -149,26 +164,22 @@ public class mainController {
         btnAdd.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                cmAll.show(btnAll, event.getScreenX(), event.getScreenY());
-                miMovie.setOnAction(new Movie());
+                cmAll.show(btnAdd, event.getScreenX(), event.getScreenY());
+                miMovie.setOnAction(new addMovie());
                 miPro.setOnAction(new AddPro());
             }
         });
 
 
-
-        btnDelete.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        /****************************************************************
+         * This will deal with the clicking of the addMovie menu-item
+         ****************************************************************/
+        btnAll.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 cmAll.show(btnAll, event.getScreenX(), event.getScreenY());
-
-            }
-        });
-
-        btnSearch.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                cmAll.show(btnAll, event.getScreenX(), event.getScreenY());
+                miPro.setOnAction(new AddPro());
+                miMovie.setOnAction(new addMovie());
 
             }
         });

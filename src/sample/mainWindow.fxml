@@ -27,7 +27,7 @@
 
                 <Button fx:id="btnConn" layoutX="50" layoutY="50"
                         mnemonicParsing="false" styleClass="btnWithImage" />
-                <TextField fx:id="tfOptions" prefWidth="150" />
+                <TextField fx:id="tfOptions" prefWidth="150" promptText="Enter Info Here"/>
                 <ChoiceBox fx:id="cbOptions" prefWidth="100">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
