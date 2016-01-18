@@ -4,10 +4,7 @@
  * File: MainController.java			*
  ****************************************/
 package sample;
-import javafx.scene.control.Button;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -40,7 +37,6 @@ public class MainController{
 
     @FXML
     public void initialize() {
-        System.out.println("Application started");
         //Create new serverInfo
         info = new ServerInfo();
 
@@ -51,6 +47,7 @@ public class MainController{
         MenuItem miMovie = new MenuItem("Movie");
         miMovie.setOnAction(new AddMovie(this));
         MenuItem miPro = new MenuItem("Professional");
+        miPro.setOnAction(new AddPro(this));
         cmAll.getItems().addAll(miMovie, miPro);
 
 
@@ -101,7 +98,6 @@ public class MainController{
             @Override
             public void handle(MouseEvent event) {
                 cmAll.show(btnAll, event.getScreenX(), event.getScreenY());
-                miPro.setOnAction(new AddPro());
             }
         });
     }
@@ -118,7 +114,6 @@ public class MainController{
         ConnectionController con = loader.getController();
         con.init(this);
         stage.show();
-        System.out.println("After shows");
     }
 
     public void setName(String n){
@@ -128,12 +123,25 @@ public class MainController{
 
     public void setPort(int n){
         this.info.setPort(n);
-        System.out.println("Post Set");
     }
 
     public void setIP(String ip){
         this.info.setIp(ip);
-        System.out.println("IP Set");
+    }
+
+    public void connect(){
+        if(this.info.createConnection()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Connection Established");
+            alert.setHeaderText(null);
+            alert.setContentText(
+                    "Connection Established!");
+            alert.showAndWait();
+        }
+    }
+
+    public void send(String str) throws IOException {
+        System.out.println(this.info.transactions(str));
     }
 
 
@@ -142,13 +150,11 @@ public class MainController{
 class AddMovie implements EventHandler<ActionEvent> {
     private MainController cont;
     public AddMovie(MainController mCont){
-        System.out.println("Inside AddMovie constructor");
         this.cont = mCont;
     }
+
     @Override
     public void handle(ActionEvent event) {
-        System.out.println("inside Hand");
-
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("addMovie.fxml"));
@@ -166,19 +172,29 @@ class AddMovie implements EventHandler<ActionEvent> {
 }
 
 class AddPro implements EventHandler<ActionEvent> {
+    private MainController mainCont;
+
+    public AddPro(MainController mCont){
+        this.mainCont = mCont;
+    }
+
     @Override
     public void handle(ActionEvent event) {
         try {
-            FXMLLoader fxmlloader = new FXMLLoader(
-                    getClass().getResource("addPro.fxml"));
-            Parent root1 = fxmlloader.load();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("addPro.fxml"));
+            System.out.println("Here 1");
+            loader.load();
+            Parent root = loader.getRoot();
+            System.out.println("Here 2");
             Stage stage = new Stage();
-            stage.setTitle("Add Professional");
-            stage.setScene(new Scene(root1));
+            stage.setScene(new Scene(root));
+            System.out.println("Here 3");
+            AddProController con = loader.getController();
+            con.init(this.mainCont);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
 }
