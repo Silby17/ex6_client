@@ -23,6 +23,7 @@ import java.io.IOException;
 
 
 public class MainController{
+    private ServerInfo info;
     @FXML
     private ContextMenu cmAll;
     @FXML
@@ -39,15 +40,14 @@ public class MainController{
     private Button btnAll;
     @FXML
     private TextField tfOptions;
-    private ServerInfo info;
-    private ActionEvent delMovie;
+
 
 
     @FXML
     public void initialize() {
         //Create new serverInfo
         info = new ServerInfo();
-
+        //Creates all the needed context Menu with its items
         createAllContextMenus();
 
 
@@ -60,9 +60,9 @@ public class MainController{
             @Override
             public void handle(MouseEvent event) {
                 //cmAll.show(btnSearch, event.getScreenX(), event.getScreenY());
-
             }
         });
+
 
         /*******************************************************
          * This will display the Context Menu when clicking on
@@ -75,6 +75,7 @@ public class MainController{
             }
         });
 
+
         /*********************************************************************
          * This will display the Context Menu when clicking on
          * the ADD button
@@ -83,18 +84,21 @@ public class MainController{
             @Override
             public void handle(MouseEvent event) {
                 cmAdd.show(btnAdd,event.getScreenX(), event.getScreenY());
-
             }
         });
 
 
-
+        /*********************************************************************
+         * This will display the Context Menu when clicking on
+         * the ALL button
+         ********************************************************************/
         btnAll.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
             }
         });
     }
+
 
     /*********************************************************************
      * This function will create all the context Menus for the 3 buttons
@@ -122,11 +126,13 @@ public class MainController{
         miDelMovie.setOnAction(new DeleteMovie(this));
         miDelPros.setOnAction(new DeletePro(this));
         cmDelete.getItems().addAll(miDelMovie, miDelPros);
-
-
     }
 
 
+    /*********************************************************************
+     * This function will deal with the event of clicking on the
+     * connection button to set the server information
+     ********************************************************************/
     @FXML
     public void btnConn(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -140,24 +146,39 @@ public class MainController{
         stage.show();
     }
 
+
+    /*********************************************************************
+     * This returns the input from the text box
+     ********************************************************************/
     public String getInput(){
         return this.tfOptions.getText();
     }
 
-
+    /*********************************************************************
+     * This returns the Textfield box
+     ********************************************************************/
    public TextField getOptionBox(){
        return this.tfOptions;
    }
 
-
+    /*********************************************************************
+     * This sets the port number of the server
+     ********************************************************************/
     public void setPort(int n){
         this.info.setPort(n);
     }
 
+    /*********************************************************************
+     * This Sets the IP address to connect to the Server
+     ********************************************************************/
     public void setIP(String ip){
         this.info.setIp(ip);
     }
 
+    /*********************************************************************
+     * This will connect the client to the server and display
+     * a information box stating that there is a connection
+     ********************************************************************/
     public void connect(){
         if(this.info.createConnection()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -169,6 +190,10 @@ public class MainController{
         }
     }
 
+    /*********************************************************************
+     * This function sends the string to server and will receive
+     * a result and return 1 for success and 0 for failure
+     ********************************************************************/
     public int send(String str) throws IOException {
         String result = this.info.transactions(str);
         if (result.contains("S")) {
