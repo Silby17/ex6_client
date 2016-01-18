@@ -1,3 +1,8 @@
+/****************************************
+ * Yossi Silberhaft & Nava Shemoul		*
+ * Exercise 6							*
+ * File: Main.java						*
+ ****************************************/
 package sample;
 
 import javafx.application.Application;
