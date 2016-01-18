@@ -5,6 +5,9 @@
  ****************************************/
 package sample;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,14 +16,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
+import org.omg.CORBA.INTERNAL;
+
+import java.awt.*;
 import java.io.IOException;
 
 
 public class MainController{
     @FXML
-    private Button btnConn;
-    @FXML
     private ContextMenu cmAll;
+    @FXML
+    private ContextMenu cmAdd;
+    @FXML
+    private ContextMenu cmDelete;
     @FXML
     private Button btnSearch;
     @FXML
@@ -32,7 +40,7 @@ public class MainController{
     @FXML
     private TextField tfOptions;
     private ServerInfo info;
-    private String name;
+    private ActionEvent delMovie;
 
 
     @FXML
@@ -40,15 +48,8 @@ public class MainController{
         //Create new serverInfo
         info = new ServerInfo();
 
-        //Create a new Context Menu
-        cmAll = new ContextMenu();
+        createAllContextMenus();
 
-        //Add new items to context Menu
-        MenuItem miMovie = new MenuItem("Movie");
-        miMovie.setOnAction(new AddMovie(this));
-        MenuItem miPro = new MenuItem("Professional");
-        miPro.setOnAction(new AddPro(this));
-        cmAll.getItems().addAll(miMovie, miPro);
 
 
         /*******************************************************
@@ -58,7 +59,7 @@ public class MainController{
         btnSearch.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                cmAll.show(btnSearch, event.getScreenX(), event.getScreenY());
+                //cmAll.show(btnSearch, event.getScreenX(), event.getScreenY());
 
             }
         });
@@ -70,25 +71,19 @@ public class MainController{
         btnDelete.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                cmAll.show(btnDelete, event.getScreenX(), event.getScreenY());
-                try{
-                    int ID = Integer.parseInt(tfOptions.getText());
-                    tfOptions.setStyle("-fx-background-color: white");
-
-                }catch (NumberFormatException e){
-                    tfOptions.setStyle("-fx-background-color: red");
-                }
+                cmDelete.show(btnDelete, event.getScreenX(), event.getScreenY());
             }
         });
 
-        /*******************************************************
+        /*********************************************************************
          * This will display the Context Menu when clicking on
          * the ADD button
-         ******************************************************/
+         ********************************************************************/
         btnAdd.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                cmAll.show(btnSearch, event.getScreenX(), event.getScreenY());
+                cmAdd.show(btnAdd,event.getScreenX(), event.getScreenY());
+
             }
         });
 
@@ -97,9 +92,38 @@ public class MainController{
         btnAll.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                cmAll.show(btnAll, event.getScreenX(), event.getScreenY());
             }
         });
+    }
+
+    /*********************************************************************
+     * This function will create all the context Menus for the 3 buttons
+     * - All, Add and Remove
+     *********************************************************************/
+    private void createAllContextMenus() {
+        //Create a new Context Menu
+        cmAdd = new ContextMenu();
+        //Add new items to context Menu
+        MenuItem miAddMovie = new MenuItem("Movie");
+        miAddMovie.setOnAction(new AddMovie(this));
+        MenuItem miAddPro = new MenuItem("Professional");
+        miAddPro.setOnAction(new AddPro(this));
+        cmAdd.getItems().addAll(miAddMovie, miAddPro);
+
+        cmAll = new ContextMenu();
+        MenuItem miAllMovie = new MenuItem("Movie");
+        MenuItem miAllPros = new MenuItem("Professional");
+        //TODO add function for handling clicks
+        cmAll.getItems().addAll(miAllMovie, miAllPros);
+
+        cmDelete = new ContextMenu();
+        MenuItem miDelMovie = new MenuItem("Movie");
+        MenuItem miDelPros = new MenuItem("Professional");
+        miDelMovie.setOnAction(new DeleteMovie(this));
+        miDelPros.setOnAction(new DeletePro(this));
+        cmDelete.getItems().addAll(miDelMovie, miDelPros);
+
+
     }
 
 
@@ -116,10 +140,15 @@ public class MainController{
         stage.show();
     }
 
-    public void setName(String n){
-        this.name = n;
-        System.out.println(this.name);
+    public String getInput(){
+        return this.tfOptions.getText();
     }
+
+
+   public TextField getOptionBox(){
+       return this.tfOptions;
+   }
+
 
     public void setPort(int n){
         this.info.setPort(n);
@@ -140,19 +169,27 @@ public class MainController{
         }
     }
 
-    public void send(String str) throws IOException {
-        System.out.println(this.info.transactions(str));
+    public int send(String str) throws IOException {
+        String result = this.info.transactions(str);
+        if (result.contains("S")) {
+            return 1;
+        } else if (result.contains("F")) {
+            return 0;
+        }
+        return -1;
     }
-
-
 }
 
+
+/*******************************************************
+ * This Abstract class will deal with the Addition of
+ * a Movie to the server
+ ******************************************************/
 class AddMovie implements EventHandler<ActionEvent> {
     private MainController cont;
     public AddMovie(MainController mCont){
         this.cont = mCont;
     }
-
     @Override
     public void handle(ActionEvent event) {
         try {
@@ -171,30 +208,103 @@ class AddMovie implements EventHandler<ActionEvent> {
     }
 }
 
+
+/*******************************************************
+ * This Abstract class will deal with the Addition
+ * of a professional to the server
+ ******************************************************/
 class AddPro implements EventHandler<ActionEvent> {
     private MainController mainCont;
-
     public AddPro(MainController mCont){
         this.mainCont = mCont;
     }
-
     @Override
     public void handle(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("addPro.fxml"));
-            System.out.println("Here 1");
             loader.load();
             Parent root = loader.getRoot();
-            System.out.println("Here 2");
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            System.out.println("Here 3");
             AddProController con = loader.getController();
             con.init(this.mainCont);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+}
+
+
+/*******************************************************
+ * This Abstract class will deal with the deletion
+ * of a movie from the server
+ ******************************************************/
+class DeleteMovie implements EventHandler<ActionEvent> {
+    private MainController main;
+    public DeleteMovie(MainController controller){
+        this.main = controller;
+    }
+    @Override
+    public void handle(ActionEvent event) {
+        String toSend;
+        int result;
+        main.getOptionBox().setStyle("-fx-background-color: white");
+        toSend = 10 + " " + main.getOptionBox().getText();
+        try{
+            result = main.send(toSend);
+            if(result == 0){
+                main.getOptionBox().setStyle("-fx-background-color: red");
+            }
+            else if(result == 1){
+                main.getOptionBox().setStyle("-fx-background-color: white");
+                main.getOptionBox().clear();
+                main.getOptionBox().promptTextProperty().
+                        setValue("Enter ID or Code");
+            }
+        }catch(IOException e){
+            main.getOptionBox().setStyle("-fx-background-color: red");
+        }
+    }
+}
+
+
+/*******************************************************
+ * This Abstract class will deal with the deletion
+ * of a Professional from the server
+ ******************************************************/
+class DeletePro implements EventHandler<ActionEvent> {
+    private MainController main;
+    public DeletePro(MainController controller){
+        this.main = controller;
+    }
+    @Override
+    public void handle(ActionEvent event) {
+        String toSend;
+        int result;
+        toSend = 11 + " " + main.getOptionBox().getText();
+        try{
+            //Checks if the value entered is a numerical ID number
+            int ID = Integer.parseInt(main.getInput());
+            try{
+                //Tries to send the request to the server to remove the
+                //professional
+                result = main.send(toSend);
+                if(result == 0){
+                    main.getOptionBox().setStyle("-fx-background-color: red");
+                }
+                else if(result == 1){
+                    main.getOptionBox().setStyle("-fx-background-color: white");
+                    main.getOptionBox().promptTextProperty().
+                            setValue("Enter ID or Code");
+                }
+            }catch (IOException e){
+                main.getOptionBox().setStyle("-fx-background-color: red");
+            }
+
+        }catch (NumberFormatException e){
+            main.getOptionBox().setStyle("-fx-background-color: red");
         }
     }
 }
