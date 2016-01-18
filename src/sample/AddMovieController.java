@@ -8,6 +8,8 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 
@@ -35,17 +37,16 @@ public class AddMovieController {
     }
 
     @FXML
-    public String btnDoneClick(ActionEvent event) throws IOException{
-        System.out.println("Clicekd  add");
+    public void btnDoneClick(ActionEvent event) throws IOException{
         double rating =  new BigDecimal(this.sldrRating.getValue())
                 .setScale(1,BigDecimal.ROUND_HALF_UP).doubleValue();
 
-        strToSend = "1" + " " + this.tfCode.getText() + " " + tfName.getText() +
+        strToSend = "1" + " " + this.tfCode.getText() + " " + tfName.getText()+
                 " " + tfLength.getText() + " " + tfYear.getText() +
                 " " + rating + " " + tfURL.getText() + " " + tfDes.getText();
-
-        System.out.println("Aout to bring string");
-        System.out.println(strToSend);
-        return strToSend;
+        main.send(strToSend);
+        //Close the window after the information is sent to the Server
+        Stage stage = (Stage)this.btnAdd.getScene().getWindow();
+        stage.close();
     }
 }
