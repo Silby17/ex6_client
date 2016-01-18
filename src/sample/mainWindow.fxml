@@ -10,7 +10,7 @@
           prefWidth="414.0" styleClass="hbLogin"
           xmlns="http://javafx.com/javafx/8"
           xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="sample.mainController">
+          fx:controller="sample.MainController">
 
     <columnConstraints>
         <ColumnConstraints />
@@ -26,8 +26,10 @@
             <children>
 
                 <Button fx:id="btnConn" layoutX="50" layoutY="50"
-                        mnemonicParsing="false" styleClass="btnWithImage" />
-                <TextField fx:id="tfOptions" prefWidth="150" promptText="Enter Info Here"/>
+                        mnemonicParsing="false" styleClass="btnWithImage"
+                        onAction="#btnConn"/>
+                <TextField fx:id="tfOptions" prefWidth="150"
+                           promptText="Enter Info Here"/>
                 <ChoiceBox fx:id="cbOptions" prefWidth="100">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
