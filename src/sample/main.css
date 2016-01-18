@@ -1,15 +1,10 @@
-
-
 .hbLogin{
- -fx-background-image: url("Image-Cinema.png");
+ -fx-background-image: url("../Images/Image-Cinema.png");
   -fx-background-position: top left;
-
-
 }
 
 .logo{
-
-    -fx-background-image: url("Image-CC.png");
+    -fx-background-image: url("../Images/Image-CC.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position:left;
 
@@ -43,26 +38,26 @@
 }
 
 .btnAdd{
-    -fx-graphic: url("Icon-plus.jpg");
+    -fx-graphic: url("../Images/Icon-plus.jpg");
 }
 
 .btnMinus{
-    -fx-graphic: url("Icon-minus.png");
+    -fx-graphic: url("../Images/Icon-minus.png");
 }
 
 .btnAll{
-    -fx-graphic: url("Icon-all.jpg");
+    -fx-graphic: url("../Images/Icon-all.jpg");
 }
 
 .btnWithImage{
-    -fx-graphic: url("Icon-Settings2.png");
+    -fx-graphic: url("../Images/Icon-Settings2.png");
 }
 .btnSearch{
-    -fx-graphic: url("Icon-s.png");
+    -fx-graphic: url("../Images/Icon-s.png");
 }
 
 .btnConfig {
-    -fx-background-image: url("Icon_conn.png");
+    -fx-background-image: url("../Images/Icon_conn.png");
 }
 
 .txt3{
