@@ -1,7 +1,7 @@
 /****************************************
  * Yossi Silberhaft & Nava Shemoul		*
  * Exercise 6							*
- * File: AddMovieController.java			*
+ * File: AddMovieController.java		*
  ****************************************/
 package sample;
 
@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 
 public class AddMovieController {
@@ -19,8 +20,7 @@ public class AddMovieController {
     @FXML TextField tfLength;
     @FXML TextField tfYear;
     @FXML Slider sldrRating;
-    @FXML CheckBox female;
-    @FXML CheckBox male;
+    @FXML TextField tfURL;
     @FXML TextField tfDes;
     @FXML CheckBox cbDrama;
     @FXML CheckBox cbSciFi;
@@ -37,7 +37,15 @@ public class AddMovieController {
     @FXML
     public String btnDoneClick(ActionEvent event) throws IOException{
         System.out.println("Clicekd  add");
-        strToSend = this.tfCode.getText();
+        double rating =  new BigDecimal(this.sldrRating.getValue())
+                .setScale(1,BigDecimal.ROUND_HALF_UP).doubleValue();
+
+        strToSend = "1" + " " + this.tfCode.getText() + " " + tfName.getText() +
+                " " + tfLength.getText() + " " + tfYear.getText() +
+                " " + rating + " " + tfURL.getText() + " " + tfDes.getText();
+
+        System.out.println("Aout to bring string");
+        System.out.println(strToSend);
         return strToSend;
     }
 }
