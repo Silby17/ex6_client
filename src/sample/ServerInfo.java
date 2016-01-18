@@ -32,6 +32,15 @@ public class ServerInfo {
         return this.port;
     }
 
+    public boolean createConnection(){
+        try {
+            openSocket();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return true;
+    }
+
     //Sets the socket
     public void setSocket(Socket sock){
         this.socket = sock;
@@ -71,7 +80,7 @@ public class ServerInfo {
 
 
     //This will send and receive information from the TCP server
-    public String transactions(StringBuilder sb) throws IOException {
+    public String transactions(String sb) throws IOException {
         //Deceleration of variables
         PrintWriter out = null;
         BufferedReader in = null;
