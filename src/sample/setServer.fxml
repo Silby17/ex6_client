@@ -8,7 +8,7 @@
 
 <VBox fx:id="vbConnect" alignment="CENTER" spacing="10.0" styleClass="vbLogin"
       xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="sample.connectionController" prefWidth="250"
+      fx:controller="sample.ConnectionController" prefWidth="250"
       prefHeight="200">
 
     <children>
@@ -16,7 +16,8 @@
                text="Please enter server details" />
 
         <TextField fx:id= "tfIP" text="127.0.0.1" styleClass="txt" />
-        <TextField fx:id="tfSocket" text="5678" styleClass="txt" />
-        <Button fx:id="btnConnect" text="Save" styleClass="button" />
+        <TextField fx:id="tfPort" text="5678" styleClass="txt" />
+        <Button fx:id="btnConnect" text="Save" styleClass="button"
+                onAction="#btnConnect"/>
     </children>
 </VBox>
