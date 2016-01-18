@@ -74,7 +74,6 @@ public class MainController{
             @Override
             public void handle(MouseEvent event) {
                 cmAll.show(btnDelete, event.getScreenX(), event.getScreenY());
-
                 try{
                     int ID = Integer.parseInt(tfOptions.getText());
                     tfOptions.setStyle("-fx-background-color: white");
@@ -82,7 +81,6 @@ public class MainController{
                 }catch (NumberFormatException e){
                     tfOptions.setStyle("-fx-background-color: red");
                 }
-
             }
         });
 
@@ -104,11 +102,8 @@ public class MainController{
             public void handle(MouseEvent event) {
                 cmAll.show(btnAll, event.getScreenX(), event.getScreenY());
                 miPro.setOnAction(new AddPro());
-                //miMovie.setOnAction(new AddMovie());
-
             }
         });
-
     }
 
 
@@ -161,7 +156,7 @@ class AddMovie implements EventHandler<ActionEvent> {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            MovieController con = loader.getController();
+            AddMovieController con = loader.getController();
             con.init(this.cont);
             stage.show();
         } catch (IOException e) {
