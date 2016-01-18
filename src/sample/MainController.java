@@ -1,3 +1,8 @@
+/****************************************
+ * Yossi Silberhaft & Nava Shemoul		*
+ * Exercise 6							*
+ * File: MainController.java			*
+ ****************************************/
 package sample;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
@@ -30,6 +35,7 @@ public class MainController{
     @FXML
     private TextField tfOptions;
     private ServerInfo info;
+    private String name;
 
 
     @FXML
@@ -43,10 +49,15 @@ public class MainController{
 
         //Add new items to context Menu
         MenuItem miMovie = new MenuItem("Movie");
+        miMovie.setOnAction(new AddMovie(this));
         MenuItem miPro = new MenuItem("Professional");
         cmAll.getItems().addAll(miMovie, miPro);
 
 
+        /*******************************************************
+         * This will display the Context Menu when clicking on
+         * the SEARCH button
+         ******************************************************/
         btnSearch.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -55,6 +66,10 @@ public class MainController{
             }
         });
 
+        /*******************************************************
+         * This will display the Context Menu when clicking on
+         * the DELETE button
+         ******************************************************/
         btnDelete.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -82,7 +97,20 @@ public class MainController{
             }
         });
 
+
+
+        btnAll.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                cmAll.show(btnAll, event.getScreenX(), event.getScreenY());
+                miPro.setOnAction(new AddPro());
+                //miMovie.setOnAction(new AddMovie());
+
+            }
+        });
+
     }
+
 
     @FXML
     public void btnConn(ActionEvent event) throws IOException {
@@ -98,6 +126,10 @@ public class MainController{
         System.out.println("After shows");
     }
 
+    public void setName(String n){
+        this.name = n;
+        System.out.println(this.name);
+    }
 
     public void setPort(int n){
         this.info.setPort(n);
@@ -108,5 +140,50 @@ public class MainController{
         this.info.setIp(ip);
         System.out.println("IP Set");
     }
+
+
 }
 
+class AddMovie implements EventHandler<ActionEvent> {
+    private MainController cont;
+    public AddMovie(MainController mCont){
+        System.out.println("Inside AddMovie constructor");
+        this.cont = mCont;
+    }
+    @Override
+    public void handle(ActionEvent event) {
+        System.out.println("inside Hand");
+
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("addMovie.fxml"));
+            loader.load();
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            MovieController con = loader.getController();
+            con.init(this.cont);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class AddPro implements EventHandler<ActionEvent> {
+    @Override
+    public void handle(ActionEvent event) {
+        try {
+            FXMLLoader fxmlloader = new FXMLLoader(
+                    getClass().getResource("addPro.fxml"));
+            Parent root1 = fxmlloader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Add Professional");
+            stage.setScene(new Scene(root1));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+    }
+}
