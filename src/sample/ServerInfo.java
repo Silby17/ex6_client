@@ -102,10 +102,10 @@ public class ServerInfo {
         char[] rec = send.toCharArray();
 
         out.println(rec);
+
         char[] fromServerArr = new char[1024];
         in.read(fromServerArr);
         received = new String(fromServerArr);
-
         return received;
     }
 }
