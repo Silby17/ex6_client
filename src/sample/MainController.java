@@ -16,9 +16,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
-import org.omg.CORBA.INTERNAL;
-
-import java.awt.*;
 import java.io.IOException;
 
 
