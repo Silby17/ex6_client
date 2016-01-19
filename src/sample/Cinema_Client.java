@@ -1,7 +1,7 @@
 /****************************************
  * Yossi Silberhaft & Nava Shemoul		*
  * Exercise 6							*
- * File: Main.java						*
+ * File: Cinema_Client.java						*
  ****************************************/
 package sample;
 
@@ -11,7 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class Cinema_Client extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
