@@ -42,7 +42,6 @@ public class MainController{
     private TextField tfOptions;
 
 
-
     @FXML
     public void initialize() {
         //Create new serverInfo
@@ -189,6 +188,7 @@ public class MainController{
             alert.showAndWait();
         }
     }
+
 
     /*********************************************************************
      * This function sends the string to server and will receive
